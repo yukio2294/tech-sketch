@@ -136,9 +136,9 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # sample app config
-AMAZON_ML_ENDPOINT = "https://realtime.machinelearning.us-east-1.amazonaws.com"
-AMAZON_ML_MODEL_ID = ""
-API_GATEWAY_ENDPOINT = ""
+AMAZON_ML_ENDPOINT = os.environ.get('AMAZON_ML_ENDPOINT', "https://realtime.machinelearning.us-east-1.amazonaws.com")
+AMAZON_ML_MODEL_ID = os.environ.get('AMAZON_ML_MODEL_ID', "")
+API_GATEWAY_ENDPOINT = os.environ.get('API_GATEWAY_ENDPOINT', "")
 
 try:
     from local_settings import *
