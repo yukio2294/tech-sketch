@@ -36,18 +36,18 @@ TERM_CHOICES = (
 )
 
 PURPOSE_CHOICES = (
-    ("0", "car"),
-    ("1", "credit_card"),
-    ("2", "debt_consolidation"),
-    ("3", "home_improvement"),
-    ("4", "house"),
-    ("5", "major_purchase"),
-    ("6", "medical"),
-    ("7", "moving"),
+    ("0", "車の購入"),
+    ("1", "クレジットカードの返済"),
+    ("2", "借金の整理"),
+    ("3", "家の修理"),
+    ("4", "家の購入"),
+    ("5", "大きな買い物"),
+    ("6", "医療費"),
+    ("7", "引っ越し"),
     ("8", "renewable_energy"),
-    ("9", "small_business"),
-    ("10", "vacation"),
-    ("11", "other"),
+    ("9", "小企業の立ち上げ"),
+    ("10", "休暇"),
+    ("11", "その他"),
 )
 
 class ExaminationForm(forms.Form):
