@@ -64,7 +64,7 @@ class ExaminationForm(forms.Form):
         required=True,
         widget=forms.Select()
     )
-    purpose = forms.ChoiseField(
+    purpose = forms.ChoiceField(
         label="目的",
         choices=PURPOSE_CHOICES,
         required=True,
