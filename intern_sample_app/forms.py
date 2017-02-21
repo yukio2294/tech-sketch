@@ -92,7 +92,7 @@ class ExaminationForm(forms.Form):
         label="自宅の所有状況",
         choices=HOME_OWNERSHIP_CHOICES,
         required=True,
-        widget=forms.Select()
+        widget=forms.RadioSelect
     )
 
     def predict_loan_status(self):
