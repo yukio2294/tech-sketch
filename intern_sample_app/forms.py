@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 
 import requests
@@ -22,12 +24,31 @@ EMP_LENGTH_CHOICES = (
 )
 
 HOME_OWNERSHIP_CHOICES = (
-    ("RENT", "賃貸"),
-    ("OWN", "持ち家"),
-    ("MORTGAGE", "持ち家(抵当)"),
-    ("OTHER", "その他"),
+    ("0", "賃貸"),
+    ("1", "持ち家"),
+    ("2", "持ち家(抵当)"),
+    ("3", "その他"),
 )
 
+TERM_CHOICES = (
+    ("36", "36ヶ月"),
+    ("60", "60ヶ月"),
+)
+
+PURPOSE_CHOICES = (
+    ("0", "car"),
+    ("1", "credit_card"),
+    ("2", "debt_consolidation"),
+    ("3", "home_improvement"),
+    ("4", "house"),
+    ("5", "major_purchase"),
+    ("6", "medical"),
+    ("7", "moving"),
+    ("8", "renewable_energy"),
+    ("9", "small_business"),
+    ("10", "vacation"),
+    ("11", "other"),
+)
 
 class ExaminationForm(forms.Form):
     loan_amnt = forms.DecimalField(
@@ -36,6 +57,18 @@ class ExaminationForm(forms.Form):
         max_value=100000,
         required=True,
         widget=forms.NumberInput()
+    )
+    term = forms.ChoiceField(
+        label="ご希望の支払い回数($)",
+        choices=TERM_CHOICES,
+        required=True,
+        widget=forms.Select()
+    )
+    purpose = forms.ChoiseField(
+        label="目的",
+        choices=PURPOSE_CHOICES,
+        required=True,
+        widget=forms.Select()
     )
     emp_title = forms.CharField(
         label="職種",
@@ -71,6 +104,8 @@ class ExaminationForm(forms.Form):
             "PredictEndpoint": amazon_ml_endpoint,
             "Record": {
                 "loan_amnt": str(self.cleaned_data['loan_amnt']),
+                "term":self.cleaned_data['term'],
+                "purpose":self.cleaned_data['purpose'],
                 "emp_title": self.cleaned_data['emp_title'],
                 "emp_length": self.cleaned_data['emp_length'],
                 "annual_inc": str(self.cleaned_data['annual_inc']),
