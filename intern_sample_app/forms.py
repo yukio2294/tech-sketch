@@ -62,7 +62,7 @@ class ExaminationForm(forms.Form):
         label="ご希望の支払い回数($)",
         choices=TERM_CHOICES,
         required=True,
-        widget=forms.Select()
+        widget=forms.RadioSelect
     )
     purpose = forms.ChoiceField(
         label="目的",
